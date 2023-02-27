@@ -7,49 +7,55 @@ public class playerController : MonoBehaviour
 
     public float speed;
     private Rigidbody2D rb2d;
-    public SpriteRenderer mySpriteRenderer;
+    private SpriteRenderer sr;
+    public Sprite[] WalkCycle;
+    public Sprite Jump;
+    public Sprite WallJump;
     
-    public float movementHorizontal;
-    public float movementVertical;
     public float jumpForce = 35;
-
-    private bool canJump;
+    public float groundDistance = .1f;
+    public float wallDistance = .6f;
 
     float frameTimer;
-    int currentFrame;
+    public float fps = 8;
+    private int currentFrame = 0;
 
     // Start is called before the first frame update
     void Start()
     {
 
         rb2d = GetComponent<Rigidbody2D>();
-        mySpriteRenderer = GetComponent<SpriteRenderer>();
+        sr = GetComponent<SpriteRenderer>();
 
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        movementHorizontal = 0;
-        movementVertical = 0;
+        float movementHorizontal = 0;
         Vector2 vel = rb2d.velocity;
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey("a"))
         {
             movementHorizontal = -speed;
+            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
-        
-
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey("d"))
         {
             movementHorizontal = speed;
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey("space") || Input.GetKey("w"))
         {
-            if (canJump)
+            if (isGrounded())
             {
                 vel.y = jumpForce;
+            }
+            else if (isWalled())
+            {
+                vel.y = jumpForce;
+                movementHorizontal = -movementHorizontal;
             }
         }
 
@@ -57,22 +63,46 @@ public class playerController : MonoBehaviour
         rb2d.velocity = vel;
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private bool isGrounded()
     {
-        if (col.gameObject.CompareTag("canJump"))
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundDistance, LayerMask.GetMask("Platform"));
+        if (hit.collider != null)
         {
-            canJump = true;
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private bool isWalled()
     {
-        if (collision.gameObject.CompareTag("canJump"))
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, wallDistance, LayerMask.GetMask("Platform"));
+        if (hit.collider != null)
         {
-            canJump = false;
-
+            return true;
         }
-
+        else
+        {
+            return false;
+        }
     }
 
+    IEnumerator WalkCycler ()
+    {
+        while (true)
+        {
+            sr.sprite = WalkCycle[currentFrame];
+            if (currentFrame > WalkCycle.Length - 1)
+            {
+                currentFrame = 0;
+            }
+            else
+            {
+                currentFrame++;
+            }
+            yield return new WaitForSeconds(1f / fps);
+        }
+    }
 }
