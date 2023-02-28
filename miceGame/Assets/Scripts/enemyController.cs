@@ -6,7 +6,7 @@ public class enemyController : MonoBehaviour
 {
     public LayerMask platforms;
     public bool grounded;
-    private bool invulnerable;
+    private bool invincible = false;
 
     public float health = 3;
 
@@ -33,9 +33,9 @@ public class enemyController : MonoBehaviour
 
     private void Hurt(Vector3 impactDirection)
     { 
-        if (impactDirection.y > 0.0f && !invulnerable)
+        if (impactDirection.y > 0.0f && !invincible)
             {
-                StartCoroutine(invulnerability(1.2f));
+                StartCoroutine(invincibility(1.2f));
                 health -= 1;
 
         }
@@ -56,9 +56,9 @@ public class enemyController : MonoBehaviour
         }
     }
 
-    IEnumerator invulnerability(float time)
+    IEnumerator invincibility(float time)
     {
-        invulnerable = true;
+        invincible = true;
 
         for (int i = 0; i < time / 0.4f; i++)
         {
@@ -68,7 +68,7 @@ public class enemyController : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
 
-        invulnerable = false;
+        invincible = false;
 
     }
 }
