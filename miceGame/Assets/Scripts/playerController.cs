@@ -20,6 +20,9 @@ public class playerController : MonoBehaviour
     public float fps = 8;
     private int currentFrame = 0;
 
+    [SerializeField]
+    private LayerMask Platform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +51,7 @@ public class playerController : MonoBehaviour
 
         if (Input.GetKey("space") || Input.GetKey("w"))
         {
+            Debug.Log(isGrounded());
             if (isGrounded())
             {
                 vel.y = jumpForce;
@@ -65,7 +69,7 @@ public class playerController : MonoBehaviour
 
     private bool isGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundDistance, LayerMask.GetMask("Platform"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundDistance, Platform);
         if (hit.collider != null)
         {
             return true;
