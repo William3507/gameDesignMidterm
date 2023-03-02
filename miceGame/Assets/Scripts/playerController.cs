@@ -56,11 +56,13 @@ public class playerController : MonoBehaviour
             {
                 vel.y = jumpForce;
             }
+            /*
             else if (isWalled())
             {
                 vel.y = jumpForce;
                 movementHorizontal = -movementHorizontal;
             }
+            */
         }
 
         vel = new Vector2(movementHorizontal, vel.y);
