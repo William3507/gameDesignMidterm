@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
-
     public float speed;
     private Rigidbody2D rb2d;
     private SpriteRenderer sr;
     public Sprite[] WalkCycle;
     public Sprite Jump;
     public Sprite WallJump;
-    
+    public string enemyTag = "Enemy";
+
     public float jumpForce = 35;
     public float groundDistance = .1f;
     public float wallDistance = .6f;
@@ -95,7 +95,15 @@ public class playerController : MonoBehaviour
         }
     }
 
-    IEnumerator WalkCycler ()
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision != null && collision.gameObject.CompareTag(enemyTag))
+        {
+            HealthManager.instance.Hurt();
+        }
+    }
+
+    IEnumerator WalkCycler()
     {
         while (true)
         {
