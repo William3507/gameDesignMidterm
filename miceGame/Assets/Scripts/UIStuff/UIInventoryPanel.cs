@@ -1,18 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIInventoryPanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static UIInventoryPanel instance;
+    public Image cheese;
+
+    private void Awake()
     {
-        
+        if (instance != null && instance != this)
+        {
+            Destroy(instance.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+        cheese.enabled = false ;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateInventory ()
     {
-        
+        cheese.enabled = true;
     }
 }

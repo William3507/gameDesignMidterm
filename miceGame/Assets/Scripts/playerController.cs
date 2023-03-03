@@ -101,37 +101,6 @@ public class playerController : MonoBehaviour
         }
     }
 
-    public void Hurt()
-    {
-        if (invincible)
-        {
-            return;
-        }
-        lives--;
-        if (lives < 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-        StartCoroutine(invincibility(1));
-        
-    }
-
-    IEnumerator invincibility(float time)
-    {
-        invincible = true;
-
-        for (int i = 0; i < time / 0.5f; i++)
-        {
-            sr.color = Color.red;
-            yield return new WaitForSeconds(0.25f);
-            sr.color = Color.white;
-            yield return new WaitForSeconds(0.25f);
-        }
-
-        invincible = false;
-
-    }
-
     IEnumerator WalkCycler ()
     {
         while (true)

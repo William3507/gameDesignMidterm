@@ -9,8 +9,7 @@ public class spikeBehavior : MonoBehaviour
         playerController player = collision.gameObject.GetComponent<playerController>();
         if (player != null)
         {
-            player.Hurt();
-            return;
+            HealthManager.instance.Hurt();
         }
     }
 }
