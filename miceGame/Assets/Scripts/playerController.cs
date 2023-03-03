@@ -11,13 +11,11 @@ public class playerController : MonoBehaviour
     private SpriteRenderer sr;
     public Sprite[] WalkCycle;
     public Sprite Jump;
-    public Sprite WallJump;
     private bool invincible = false;
     private int lives = 3;
     
     public float jumpForce = 35;
     public float groundDistance = .1f;
-    public float wallDistance = .6f;
 
     float frameTimer;
     public float fps = 8;
@@ -76,21 +74,8 @@ public class playerController : MonoBehaviour
     {
         Vector3 rayStart = transform.position + Vector3.down * 0.5f;
 
-        RaycastHit2D hit = Physics2D.Raycast(rayStart, Vector2.down, 0.1f);
+        RaycastHit2D hit = Physics2D.Raycast(rayStart, Vector2.down, groundDistance, LayerMask.GetMask("Platform"));
 
-        if (hit.collider != null)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    private bool isWalled()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, wallDistance, LayerMask.GetMask("Platform"));
         if (hit.collider != null)
         {
             return true;
