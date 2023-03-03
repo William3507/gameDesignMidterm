@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class spikeBehavior : MonoBehaviour
 {
-    void OnTriggerStay2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D collision)
     {
-        playerController pController = other.gameObject.GetComponent<PlatformerController2D>();
-        if (pController != null)
+        playerController player = collision.gameObject.GetComponent<playerController>();
+        if (player != null)
         {
-            pController.TakeDamage();
+            player.Hurt();
             return;
         }
     }

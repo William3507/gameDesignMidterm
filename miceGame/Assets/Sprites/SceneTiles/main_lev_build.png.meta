@@ -704,6 +704,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: smallSquare
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 1192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3e88846bdea0476c995fc9abc376120
+      internalID: 1565281598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -720,6 +741,7 @@ TextureImporter:
       TC5: 2100994981
       platform: 1887674533
       pillarM: 302361586
+      smallSquare: 1565281598
       RSS: -1621804388
       ceiling: -1982017645
       TC6: -30154263

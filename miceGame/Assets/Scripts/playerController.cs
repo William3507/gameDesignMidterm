@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerController : MonoBehaviour
 {
+
     public float speed;
     private Rigidbody2D rb2d;
     private SpriteRenderer sr;
     public Sprite[] WalkCycle;
     public Sprite Jump;
     public Sprite WallJump;
-    public string enemyTag = "Enemy";
-
+    private bool invincible = false;
+    private int lives = 3;
+    
     public float jumpForce = 35;
     public float groundDistance = .1f;
     public float wallDistance = .6f;
@@ -63,6 +66,7 @@ public class playerController : MonoBehaviour
                 movementHorizontal = -movementHorizontal;
             }
             */
+            
         }
 
         vel = new Vector2(movementHorizontal, vel.y);
@@ -95,15 +99,38 @@ public class playerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void Hurt()
     {
-        if (collision != null && collision.gameObject.CompareTag(enemyTag))
+        if (invincible)
         {
-            HealthManager.instance.Hurt();
+            return;
         }
+        lives--;
+        if (lives < 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        StartCoroutine(invincibility(1));
+        
     }
 
-    IEnumerator WalkCycler()
+    IEnumerator invincibility(float time)
+    {
+        invincible = true;
+
+        for (int i = 0; i < time / 0.5f; i++)
+        {
+            sr.color = Color.red;
+            yield return new WaitForSeconds(0.25f);
+            sr.color = Color.white;
+            yield return new WaitForSeconds(0.25f);
+        }
+
+        invincible = false;
+
+    }
+
+    IEnumerator WalkCycler ()
     {
         while (true)
         {
