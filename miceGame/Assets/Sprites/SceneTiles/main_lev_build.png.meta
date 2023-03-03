@@ -296,7 +296,12 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: -16, y: -16}
+        - {x: 16, y: 16}
+        - {x: 16, y: 16}
       tessellationDetail: 0
       bones: []
       spriteID: cc6196f713bf84649a475659a89a19bb
@@ -359,7 +364,12 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -16, y: 16}
+        - {x: -16, y: 16}
+        - {x: 16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
       tessellationDetail: 0
       bones: []
       spriteID: 47812527b6714407d8c9c26b35a0ef01
@@ -590,7 +600,12 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -16, y: 1}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: -16}
+        - {x: -10, y: -2}
       tessellationDetail: 0
       bones: []
       spriteID: 378a00bc189e542a7ba7411d2104b129
@@ -632,7 +647,12 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -16, y: -16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 1}
+        - {x: 12, y: -1}
       tessellationDetail: 0
       bones: []
       spriteID: 674e8b5e29cad47909707a20e833819d
@@ -713,7 +733,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -721,6 +741,27 @@ TextureImporter:
       bones: []
       spriteID: a3e88846bdea0476c995fc9abc376120
       internalID: 1565281598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skinnyBack
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1088
+        width: 34
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47691041e34de44f7884f9aec90b62fe
+      internalID: 1208628877
       vertices: []
       indices: 
       edges: []
@@ -758,6 +799,7 @@ TextureImporter:
       TC1: -544012239
       slantR: -1704640470
       plat1: -874779886
+      skinnyBack: 1208628877
       empty: -1404063823
       TC2: 761863082
       RCorn: -798394881
