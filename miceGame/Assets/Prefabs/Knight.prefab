@@ -104,7 +104,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.75, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -147,42 +147,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  idle:
+  - {fileID: 1671538878, guid: 809bf93159f7e4f39a9d27502192c698, type: 3}
+  - {fileID: 1800165323, guid: 809bf93159f7e4f39a9d27502192c698, type: 3}
   WalkCycle:
   - {fileID: 1671538878, guid: 809bf93159f7e4f39a9d27502192c698, type: 3}
   - {fileID: 1932980890, guid: 809bf93159f7e4f39a9d27502192c698, type: 3}
   - {fileID: 1800165323, guid: 809bf93159f7e4f39a9d27502192c698, type: 3}
   - {fileID: 257358072, guid: 809bf93159f7e4f39a9d27502192c698, type: 3}
-  Jump: {fileID: 1932980890, guid: 809bf93159f7e4f39a9d27502192c698, type: 3}
-  WallJump: {fileID: 1800165323, guid: 809bf93159f7e4f39a9d27502192c698, type: 3}
+  Jump:
+  - {fileID: 1932980890, guid: 809bf93159f7e4f39a9d27502192c698, type: 3}
   jumpForce: 6
   groundDistance: 0.1
   fps: 8
   Platform:
     serializedVersion: 2
     m_Bits: 8
---- !u!61 &1978694567140953624
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5380946405244715795}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.75, y: 1}
-  m_EdgeRadius: 0
