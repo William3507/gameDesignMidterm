@@ -6,6 +6,7 @@ public class enemyController : MonoBehaviour
 {
     public LayerMask platforms;
     public bool grounded;
+    public float lengthRay;
     private bool invincible = false;
 
     public float health = 3;
@@ -24,21 +25,37 @@ public class enemyController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        
+            RaycastHit2D upHit = Physics2D.Raycast(transform.position, Vector2.up, lengthRay, LayerMask.GetMask("Player"));
+            RaycastHit2D leftUpHit = Physics2D.Raycast(transform.position, new Vector2(-0.5f, 1f), lengthRay, LayerMask.GetMask("Player"));
+            RaycastHit2D rightUpHit = Physics2D.Raycast(transform.position, new Vector2(0.5f, 1f), lengthRay, LayerMask.GetMask("Player"));
+
+            Debug.DrawLine(transform.position, Vector2.up * lengthRay * 2, Color.blue);
+
+
+
+        if (upHit.collider != null || leftUpHit.collider != null || rightUpHit.collider != null)
+            {
+                Hurt();
+            }
         
     }
 
 
 
-    private void Hurt(Vector3 impactDirection)
-    { 
-        if (impactDirection.y > 0.0f && !invincible)
+    public void Hurt()
+    {        
+        
+            if (!invincible)
             {
                 StartCoroutine(invincibility(1.2f));
+
                 health -= 1;
 
-        }
+            }
+        
 
         if (health <= 0)
         {
@@ -46,14 +63,9 @@ public class enemyController : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        playerController controller = collision.gameObject.GetComponent<playerController>();
-        if (controller != null)
-        {
-            Vector3 impactDirection = collision.gameObject.transform.position - transform.position;
-            Hurt(impactDirection);
-        }
+
     }
 
     IEnumerator invincibility(float time)
