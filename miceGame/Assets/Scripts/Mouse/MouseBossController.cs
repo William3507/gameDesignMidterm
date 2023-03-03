@@ -14,6 +14,11 @@ public class MouseBossController : MonoBehaviour
     public float jumpForce = 35;
     public float groundDistance = .1f;
 
+    public float health = 3;
+    public bool invincible = false;
+    public float hurtTime = 5;
+    public float lengthRay = 0.9f;
+
     private Sprite[] currentCycle;
     public float fps = 8;
     private int currentFrame = 0;
@@ -33,6 +38,8 @@ public class MouseBossController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+
         if(rb2d.velocity.y != 0)
         {
             currentCycle = Jump;
@@ -54,6 +61,8 @@ public class MouseBossController : MonoBehaviour
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
+
+        isHit();
     }
 
     IEnumerator AnimationCycler()
@@ -71,5 +80,44 @@ public class MouseBossController : MonoBehaviour
             sr.sprite = currentCycle[currentFrame];
             yield return new WaitForSeconds(1f / fps);
         }
+    }
+
+    public void isHit()
+    {
+        RaycastHit2D upHit = Physics2D.Raycast(transform.position + new Vector3(0,1,0), Vector2.up, lengthRay, LayerMask.GetMask("Player"));
+        RaycastHit2D leftUpHit = Physics2D.Raycast(transform.position + new Vector3(0, 1, 0), new Vector2(-1f, 1f), lengthRay, LayerMask.GetMask("Player"));
+        RaycastHit2D rightUpHit = Physics2D.Raycast(transform.position + new Vector3(0, 1, 0), new Vector2(1f, 1f), lengthRay, LayerMask.GetMask("Player"));
+
+        if (upHit.collider != null || leftUpHit.collider != null || rightUpHit.collider != null)
+        {
+            Hurt();
+        }
+    }
+
+    public void Hurt()
+    {
+        if (!invincible)
+            {
+                StartCoroutine(invincibility(1.2f));
+
+                health -= 1;
+
+            }
+
+
+        if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+    IEnumerator invincibility(float time)
+    {
+        invincible = true;
+
+        yield return new WaitForSeconds(hurtTime);
+
+        invincible = false;
+
     }
 }
