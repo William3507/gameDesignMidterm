@@ -6,7 +6,7 @@ public class HealthManager : MonoBehaviour
 {
     public static HealthManager instance;
     public int maxPlayerHealth;
-    private bool isHurting = false;
+    public bool isHurting = false;
     public float hurtTime = 1;
 
     private void Awake()

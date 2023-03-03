@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
-    Image cheese;
 
     void Awake()
     {
@@ -17,15 +16,12 @@ public class InventoryManager : MonoBehaviour
         else
         {
             instance = this;
-        } 
-        cheese.enabled = false;
+        }
     }
 
-    void UpdateImage()
+    void GotCheese()
     {
-        if (PlayerData.hasCheese)
-        {
-            cheese.enabled = true;
-        }
+        PlayerData.hasCheese = true;
+        UIInventoryPanel.instance.UpdateInventory();
     }
 }
