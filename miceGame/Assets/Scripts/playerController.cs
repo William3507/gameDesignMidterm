@@ -136,4 +136,13 @@ public class playerController : MonoBehaviour
             yield return new WaitForSeconds(1f / fps);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Cheese"))
+        {
+            InventoryManager.instance.GotCheese();
+            Destroy(collision.gameObject);
+        }
+    }
 }

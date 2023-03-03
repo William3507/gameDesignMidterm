@@ -19,7 +19,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    void GotCheese()
+    public void GotCheese()
     {
         PlayerData.hasCheese = true;
         UIInventoryPanel.instance.UpdateInventory();
