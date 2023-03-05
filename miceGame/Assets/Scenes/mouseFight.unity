@@ -1108,7 +1108,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 15a9dddad3c6c44f2810dde82cceb67a, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -1122,7 +1122,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 382130415}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 15a9dddad3c6c44f2810dde82cceb67a, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1140,6 +1140,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knight
       objectReference: {fileID: 0}
+    - target: {fileID: 1860015458336267515, guid: 5e63c07af3734423396af62443d863fe, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 15a9dddad3c6c44f2810dde82cceb67a, type: 2}
     - target: {fileID: 1860015458862533005, guid: 5e63c07af3734423396af62443d863fe, type: 3}
       propertyPath: m_RootOrder
       value: 3
