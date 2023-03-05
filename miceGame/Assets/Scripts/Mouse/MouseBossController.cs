@@ -10,18 +10,24 @@ public class MouseBossController : MonoBehaviour
     public Sprite[] idle;
     public Sprite[] WalkCycle;
     public Sprite[] Jump;
+    Transform target;
 
-    public float jumpForce = 35;
+    public float jumpForce = 5;
     public float groundDistance = .1f;
 
     public float health = 3;
     public bool invincible = false;
     public float hurtTime = 5;
     public float lengthRay = 0.9f;
+    bool blinking = false;
+    bool scurrying = false;
 
     private Sprite[] currentCycle;
     public float fps = 8;
     private int currentFrame = 0;
+
+    //Mouse Magic Summon Fireball
+    public GameObject fireBall;
 
     [SerializeField]
     private LayerMask Platform;
@@ -32,13 +38,14 @@ public class MouseBossController : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         currentCycle = idle;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine(AnimationCycler());
+        StartCoroutine(phaseCycler());
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
 
         if(rb2d.velocity.y != 0)
         {
@@ -53,22 +60,46 @@ public class MouseBossController : MonoBehaviour
             currentCycle = idle;
         }
 
-        if (rb2d.velocity.x > 0)
+        if (target && !scurrying)
         {
-            transform.localScale = new Vector3(1f, 1f, 1f);
-        }
-        else if (rb2d.velocity.x < 0)
-        {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            Vector3 direction = (target.position - transform.position).normalized;
+
+            if (direction.x < 0)
+            {
+                sr.flipX = false;
+            }
+            else
+            {
+                sr.flipX = true;
+            }
+
         }
 
         isHit();
+
     }
 
     IEnumerator AnimationCycler()
     {
         while (true)
         {
+            if (invincible)
+            {
+                blinking = !blinking;
+            }
+            else
+            {
+                blinking = false;
+            }
+
+            if (blinking)
+            {
+                sr.color = Color.red;
+            }
+            else
+            {
+                sr.color = Color.white;
+            }
             if (currentFrame >= currentCycle.Length - 2)
             {
                 currentFrame = 0;
@@ -94,13 +125,27 @@ public class MouseBossController : MonoBehaviour
         }
     }
 
+    public void mouseJump(float towardsPlayer)
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+
+        rb2d.velocity = new Vector2(towardsPlayer*direction.x*jumpForce, jumpForce);
+    }
+
+    public void mouseMagic()
+    {
+        blinking = true;
+
+        Instantiate(fireBall, transform.position, transform.rotation);
+    }
+
     public void Hurt()
     {
         if (!invincible)
             {
-                StartCoroutine(invincibility(1.2f));
 
-                health -= 1;
+            StartCoroutine(invincibility());
+            health -= 1;
 
             }
 
@@ -111,13 +156,118 @@ public class MouseBossController : MonoBehaviour
             }
         }
 
-    IEnumerator invincibility(float time)
+    IEnumerator invincibility()
     {
         invincible = true;
+        scurrying = true;
 
-        yield return new WaitForSeconds(hurtTime);
+
+        Vector3 direction = (target.position - transform.position).normalized;
+
+        if (direction.x < 0)
+        {
+            sr.flipX = true;
+        }
+        else
+        {
+            sr.flipX = false;
+        }
+
+
+        mouseJump(-5f);
+        yield return new WaitForSeconds(hurtTime/12);
+
+        mouseJump(-5f);
+        yield return new WaitForSeconds(hurtTime / 3);
+       
 
         invincible = false;
+        scurrying = false;
+
+        yield break;
 
     }
+
+    IEnumerator phaseCycler()
+    {
+        while (health > 0)
+        {
+            float move;
+            if (health >= 3 && !scurrying)               //Mouse Phase 3
+            {
+                move = Random.Range(0, 3);
+
+                if (move >= 1)
+                {
+                    mouseJump(1f);
+                }
+                else
+                {
+                    mouseMagic();
+                }
+
+
+                yield return new WaitForSeconds(1.5f);
+            }
+            else if (health == 2)                        //Mouse Phase 2
+            {
+                move = Random.Range(0, 5);
+
+                if (move >= 4)
+                {
+                    mouseJump(1f);
+                }
+                else if(move == 3)
+                {
+                    mouseMagic();
+                    yield return new WaitForSeconds(0.33f);
+                    mouseMagic();
+                }
+                else if(move <= 2)
+                {
+                    mouseJump(1.5f);
+                    mouseMagic();
+                }
+
+                yield return new WaitForSeconds(0.66f);
+
+            }
+            else if (health == 1)                       //Mouse Phase 1
+            {
+                move = Random.Range(0, 10);
+
+                if (move >= 8)
+                {
+                    mouseJump(1f);
+                }
+                else if (move >= 5 && move < 8)
+                {
+                    mouseMagic();
+                }
+                else if (move <= 2)
+                {
+                    mouseJump(1.5f);
+                    mouseMagic();
+                    mouseJump(-1.5f);
+                }
+                else if(move > 2 && move < 5)
+                {
+                    mouseMagic();
+                    yield return new WaitForSeconds(0.33f);
+                    mouseMagic();
+                    yield return new WaitForSeconds(0.33f);
+                    mouseMagic();
+
+                }
+
+                yield return new WaitForSeconds(0.5f);
+
+            }
+
+            yield return new WaitForSeconds(1);
+        }
+
+        yield break;
+    }
+
 }
