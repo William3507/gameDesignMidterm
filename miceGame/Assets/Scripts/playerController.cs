@@ -62,7 +62,9 @@ public class playerController : MonoBehaviour
         vel = new Vector2(movementHorizontal, vel.y);
         rb2d.velocity = vel;
 
-        if(rb2d.velocity.y != 0)
+        hitEnemy(movementHorizontal);
+
+        if (rb2d.velocity.y != 0)
         {
             currentCycle = Jump;
         }
@@ -100,6 +102,18 @@ public class playerController : MonoBehaviour
         {
             return false;
         }
+    }
+
+    private void hitEnemy(float movementHorizontal)
+    {
+        Vector3 rayStart = transform.position + Vector3.down * 0.5f;
+        RaycastHit2D hitEnemy = Physics2D.Raycast(rayStart, Vector2.down, groundDistance, LayerMask.GetMask("Enemy"));
+
+        if (hitEnemy.collider != null)
+        {
+            rb2d.velocity = new Vector2(movementHorizontal, jumpForce);
+        }
+
     }
 
     IEnumerator AnimationCycler ()
