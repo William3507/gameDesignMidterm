@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2678703230656901659}
   - component: {fileID: 8963776695195176442}
+  - component: {fileID: 5384792109265524663}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9086984978986634164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.250497, y: -1.4899043, z: -6.970323}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -128,3 +129,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5384792109265524663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9086984978986634164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d44b27398f68415fa59e717b02a4c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: {fileID: 8300000, guid: 8262341eb0256415ea36804c70c8b160, type: 3}
+  playerHit: {fileID: 8300000, guid: 971acf6302a954f7d9fd441ff0190ee9, type: 3}
+  enemyHit: {fileID: 8300000, guid: ea99aa3f509704c93bef582cea617253, type: 3}
+  fireball: {fileID: 8300000, guid: 6735e817a47aa48aba5e1488e09f343c, type: 3}
+  playerDie: {fileID: 8300000, guid: 557415dce66644ac28cc69b2ee8530a3, type: 3}

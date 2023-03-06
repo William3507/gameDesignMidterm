@@ -46,6 +46,6 @@ public class HealthManager : MonoBehaviour
     public void Die()
     {
         AudioManager.instance.playSound(AudioManager.instance.playerDie);
-        GameManager.instance.RestartGameAtCheckpoint(1);
+        GameManager.instance.RestartGameAtCheckpoint(3);
     }
 }

@@ -829,15 +829,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2678703230656901659, guid: 52fe5dd0a18094b878146b84929e9636, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.250497
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2678703230656901659, guid: 52fe5dd0a18094b878146b84929e9636, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.4899043
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2678703230656901659, guid: 52fe5dd0a18094b878146b84929e9636, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.029677
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2678703230656901659, guid: 52fe5dd0a18094b878146b84929e9636, type: 3}
       propertyPath: m_LocalRotation.w
@@ -871,7 +871,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5384792109265524663, guid: 52fe5dd0a18094b878146b84929e9636, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 52fe5dd0a18094b878146b84929e9636, type: 3}
 --- !u!4 &226779513284934098 stripped
 Transform:
