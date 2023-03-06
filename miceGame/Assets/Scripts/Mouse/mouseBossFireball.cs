@@ -82,7 +82,7 @@ public class mouseBossFireball : MonoBehaviour
         {
             StartCoroutine(squish(0.33f));
         }
-        else if (col.gameObject.CompareTag("Water"))
+        else if (col.gameObject.CompareTag("Enemy") || col.gameObject.CompareTag("Fireball"))
         {
 
         }

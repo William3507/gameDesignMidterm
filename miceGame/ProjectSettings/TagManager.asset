@@ -8,6 +8,8 @@ TagManager:
   - canJump
   - Enemy
   - Cheese
+  - Undefined
+  - Fireball
   layers:
   - Default
   - TransparentFX
