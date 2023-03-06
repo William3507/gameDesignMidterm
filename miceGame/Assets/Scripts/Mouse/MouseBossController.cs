@@ -28,6 +28,8 @@ public class MouseBossController : MonoBehaviour
 
     //Mouse Magic Summon Fireball
     public GameObject fireBall;
+    public GameObject cookieSprite;
+    public GameObject theEnd;
 
     [SerializeField]
     private LayerMask Platform;
@@ -153,10 +155,13 @@ public class MouseBossController : MonoBehaviour
 
 
         if (health <= 0)
-            {
-                Destroy(gameObject);
-            }
+        {
+            Instantiate(theEnd, transform.position, transform.rotation);
+            Instantiate(cookieSprite, transform.position, transform.rotation);
+            GameManager.instance.RestartGame();
+            Destroy(gameObject);
         }
+    }
 
     IEnumerator invincibility()
     {

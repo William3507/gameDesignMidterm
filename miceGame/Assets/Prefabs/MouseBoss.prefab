@@ -117,6 +117,8 @@ MonoBehaviour:
   lengthRay: 0.6
   fps: 8
   fireBall: {fileID: 1049480184912509528, guid: cd951ded37019447db67b4384584eb05, type: 3}
+  cookieSprite: {fileID: 7871354241254801285, guid: 0a72a5fd71cd143069995d33e2a5865a, type: 3}
+  theEnd: {fileID: 7306418225527187991, guid: 9cbb42c8949b44c48b06b1aee84e62eb, type: 3}
   Platform:
     serializedVersion: 2
     m_Bits: 8

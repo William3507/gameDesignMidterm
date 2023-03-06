@@ -20,7 +20,14 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public void RestartGameAtCheckpoint(float seconds)
+    private void Update()
+    {
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			Application.Quit();
+		}
+	}
+    public void RestartGameAtCheckpoint(float seconds)
 	{
 		StartCoroutine(LoadSceneAfterSeconds(seconds));
 	}
@@ -29,5 +36,15 @@ public class GameManager : MonoBehaviour
 	{
 		yield return new WaitForSeconds(seconds);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
+	public void RestartGame()
+    {
+		StartCoroutine(RestartGameAfter(5));
+    }
+	private IEnumerator RestartGameAfter(int seconds)
+    {
+		yield return new WaitForSeconds(seconds);
+		SceneManager.LoadScene("introScene");
 	}
 }
