@@ -40,7 +40,7 @@ public class enemyController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 vel = rb2d.velocity;
+        Vector3 vel = rb2d.velocity ;
         if (!CheckGroundAhead())
         {
             goingLeft = !goingLeft;
@@ -116,7 +116,7 @@ public class enemyController : MonoBehaviour
         }
     }
 
-    public bool CheckGroundAhead()
+    bool CheckGroundAhead()
     {
         Vector2 rayStart;
         if (goingLeft)

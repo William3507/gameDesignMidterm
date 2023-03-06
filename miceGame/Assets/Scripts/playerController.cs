@@ -118,6 +118,7 @@ public class playerController : MonoBehaviour
         else if (enemyHitLeft.collider != null || enemyHitRight.collider != null)
         {
             StartCoroutine(HealthManager.instance.Hurt());
+            Debug.Log(PlayerData.playerHealth);
         }
     }
 
