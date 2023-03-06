@@ -5,6 +5,8 @@ using UnityEngine;
 public class enemyController : MonoBehaviour
 {
     public LayerMask platforms;
+    public float speed = .5f;
+    private bool goingLeft;
     public float lengthRay = .9f;
     private bool invincible = false;
     public int hurtTime = 1;
@@ -38,19 +40,31 @@ public class enemyController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Vector2 vel = rb2d.velocity;
+        if (!CheckGroundAhead())
+        {
+            goingLeft = !goingLeft;
+        }
+        if (health != 1)
+        {
+            if (goingLeft)
+            {
+                vel.x = -speed;
+                transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+            else
+            {
+                vel.x = speed;
+                transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
+        }
+            
         if (CheckJumped())
         {
             Hurt();
         }
 
-        if (rb2d.velocity.x > 0)
-        {
-            transform.localScale = new Vector3(1f, 1f, 1f);
-        }
-        else if (rb2d.velocity.x < 0)
-        {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-        }
+        rb2d.velocity = vel;
 
         if (rb2d.velocity.x != 0)
         {
@@ -93,6 +107,29 @@ public class enemyController : MonoBehaviour
         // Debug.DrawLine(transform.position, Vector2.up * lengthRay * 2, Color.blue);
 
         if (upHit.collider != null || leftUpHit.collider != null || rightUpHit.collider != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool CheckGroundAhead()
+    {
+        Vector2 rayStart;
+        if (goingLeft)
+        {
+            rayStart = transform.position + Vector3.left;
+        }
+        else
+        {
+            rayStart = transform.position + Vector3.right;
+        }
+
+        RaycastHit2D groundAhead = Physics2D.Raycast(rayStart, Vector2.down, lengthRay, platforms);
+        if (groundAhead.collider != null)
         {
             return true;
         }

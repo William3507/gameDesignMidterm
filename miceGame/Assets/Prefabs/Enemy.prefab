@@ -123,6 +123,7 @@ MonoBehaviour:
   platforms:
     serializedVersion: 2
     m_Bits: 8
+  speed: 0.5
   lengthRay: 0.9
   hurtTime: 1
   health: 3
