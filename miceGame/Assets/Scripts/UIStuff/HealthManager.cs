@@ -36,6 +36,7 @@ public class HealthManager : MonoBehaviour
             UIHealthPanel.instance.SetLives(PlayerData.playerHealth);
             if (PlayerData.playerHealth <= 0)
             {
+                AudioManager.instance.playSound(AudioManager.instance.playerDie);
                 Die();
             }
             yield return new WaitForSeconds(hurtTime);
@@ -45,7 +46,6 @@ public class HealthManager : MonoBehaviour
 
     public void Die()
     {
-        AudioManager.instance.playSound(AudioManager.instance.playerDie);
         GameManager.instance.RestartGameAtCheckpoint(3);
     }
 }

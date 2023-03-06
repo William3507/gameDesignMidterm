@@ -30,6 +30,7 @@ public class mouseBossFireball : MonoBehaviour
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         frameTimer = 0;
         currentFrame = 0;
+        AudioManager.instance.playSound(AudioManager.instance.fireball);
     }
 
 

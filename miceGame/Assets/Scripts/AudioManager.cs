@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip enemyHit;
     public AudioClip fireball;
     public AudioClip playerDie;
+    public AudioClip cheeseGet;
 
     private AudioSource audioSource;
 

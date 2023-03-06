@@ -58,6 +58,10 @@ public class enemyController : MonoBehaviour
                 transform.localScale = new Vector3(-1f, 1f, 1f);
             }
         }
+        else
+        {
+            vel.x = 0;
+        }
             
         if (CheckJumped())
         {

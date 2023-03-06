@@ -127,7 +127,6 @@ public class MouseBossController : MonoBehaviour
 
     public void mouseJump(float towardsPlayer)
     {
-        AudioManager.instance.playSound(AudioManager.instance.jump);
         Vector3 direction = (target.position - transform.position).normalized;
 
 
@@ -139,7 +138,7 @@ public class MouseBossController : MonoBehaviour
         blinking = true;
 
         Instantiate(fireBall, transform.position, transform.rotation);
-        AudioManager.instance.playSound(AudioManager.instance.fireball);
+
     }
 
     public void Hurt()
@@ -163,7 +162,7 @@ public class MouseBossController : MonoBehaviour
     {
         invincible = true;
         scurrying = true;
-
+        AudioManager.instance.playSound(AudioManager.instance.enemyHit);
 
         Vector3 direction = (target.position - transform.position).normalized;
 

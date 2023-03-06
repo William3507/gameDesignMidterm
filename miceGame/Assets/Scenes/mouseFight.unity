@@ -2888,10 +2888,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 4875650464042313807, guid: ccbcb18d81c3f40e29e76f5e5c1d7eb9, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6888420286613495269, guid: ccbcb18d81c3f40e29e76f5e5c1d7eb9, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2934,30 +2930,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6888420286613495269, guid: ccbcb18d81c3f40e29e76f5e5c1d7eb9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7694638775148950084, guid: ccbcb18d81c3f40e29e76f5e5c1d7eb9, type: 3}
-      propertyPath: health
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7694638775148950084, guid: ccbcb18d81c3f40e29e76f5e5c1d7eb9, type: 3}
-      propertyPath: fireBall
-      value: 
-      objectReference: {fileID: 1049480184912509528, guid: cd951ded37019447db67b4384584eb05, type: 3}
-    - target: {fileID: 7694638775148950084, guid: ccbcb18d81c3f40e29e76f5e5c1d7eb9, type: 3}
-      propertyPath: hurtTime
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7694638775148950084, guid: ccbcb18d81c3f40e29e76f5e5c1d7eb9, type: 3}
-      propertyPath: jumpForce
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7694638775148950084, guid: ccbcb18d81c3f40e29e76f5e5c1d7eb9, type: 3}
-      propertyPath: lengthRay
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7694638775148950084, guid: ccbcb18d81c3f40e29e76f5e5c1d7eb9, type: 3}
-      propertyPath: invincible
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
