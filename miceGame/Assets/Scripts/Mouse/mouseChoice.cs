@@ -16,6 +16,8 @@ public class mouseChoice : MonoBehaviour
     public GameObject cookieSprite;
     public GameObject theEnd;
 
+    public SpriteRenderer mySpriteRenderer;
+
     Rigidbody2D rb2d;
 
     public int toggle = -1;
@@ -24,6 +26,7 @@ public class mouseChoice : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         StartCoroutine(cutScene());
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -59,6 +62,8 @@ public class mouseChoice : MonoBehaviour
         if(toggle == 5)
         {
             Instantiate(fine);
+
+            mySpriteRenderer.flipX = true;
             rb2d.velocity = new Vector2(4,0);
             yield return new WaitForSeconds(3f);
 

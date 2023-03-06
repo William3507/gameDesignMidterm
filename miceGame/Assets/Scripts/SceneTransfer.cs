@@ -7,14 +7,23 @@ using UnityEngine.SceneManagement;
 public class SceneTransfer : MonoBehaviour
 {
 
-    public string nextScene;
+    public string fightScene;
+    public string cheeseTalk;
 
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
+            if (PlayerData.hasCheese)
+            {
+                SceneManager.LoadScene(cheeseTalk, LoadSceneMode.Single);
+            }
+            else
+            {
+                SceneManager.LoadScene(fightScene, LoadSceneMode.Single);
+
+            }
         }
     }
 }
