@@ -48,11 +48,11 @@ public class knightAnimate : MonoBehaviour
         Instantiate(mouse, spawnPosition, Quaternion.identity);
 
 
-        yield return new WaitForSeconds(12f);
+        yield return new WaitForSeconds(10.5f);
 
         rb2d.velocity = new Vector2(3, 0);
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
 
         SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
         yield break;
