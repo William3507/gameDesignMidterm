@@ -9,6 +9,7 @@ public class HealthManager : MonoBehaviour
     public bool isHurting = false;
     public float hurtTime = 1;
 
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -29,6 +30,7 @@ public class HealthManager : MonoBehaviour
     {
         if (!isHurting)
         {
+            AudioManager.instance.playSound(AudioManager.instance.playerHit);
             isHurting = true;
             PlayerData.playerHealth--;
             UIHealthPanel.instance.SetLives(PlayerData.playerHealth);
@@ -43,6 +45,7 @@ public class HealthManager : MonoBehaviour
 
     public void Die()
     {
+        AudioManager.instance.playSound(AudioManager.instance.playerDie);
         GameManager.instance.RestartGameAtCheckpoint(1);
     }
 }

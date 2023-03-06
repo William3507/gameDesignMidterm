@@ -55,6 +55,7 @@ public class playerController : MonoBehaviour
             if (isGrounded())
             {
                 vel.y = jumpForce;
+                AudioManager.instance.playSound(AudioManager.instance.jump);
             }
             
         }
@@ -118,7 +119,6 @@ public class playerController : MonoBehaviour
         else if (enemyHitLeft.collider != null || enemyHitRight.collider != null)
         {
             StartCoroutine(HealthManager.instance.Hurt());
-            Debug.Log(PlayerData.playerHealth);
         }
     }
 
@@ -164,11 +164,7 @@ public class playerController : MonoBehaviour
             InventoryManager.instance.GotCheese();
             Destroy(collision.gameObject);
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Fireball"))
+        else if (collision.gameObject.CompareTag("Fireball"))
         {
             StartCoroutine(HealthManager.instance.Hurt());
 
