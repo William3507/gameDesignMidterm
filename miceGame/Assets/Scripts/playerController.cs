@@ -111,12 +111,13 @@ public class playerController : MonoBehaviour
         RaycastHit2D enemyJump = Physics2D.Raycast(rayStart, Vector2.down, groundDistance, LayerMask.GetMask("Enemy"));
         RaycastHit2D enemyHitLeft = Physics2D.Raycast(transform.position + Vector3.left * .5f, Vector2.left, groundDistance, LayerMask.GetMask("Enemy"));
         RaycastHit2D enemyHitRight = Physics2D.Raycast(transform.position + Vector3.right * .5f, Vector2.right, groundDistance, LayerMask.GetMask("Enemy"));
+        RaycastHit2D enemyHitUp = Physics2D.Raycast(transform.position + Vector3.up * .5f, Vector2.up, groundDistance, LayerMask.GetMask("Enemy"));
 
         if (enemyJump.collider != null)
         {
             rb2d.velocity = new Vector2(movementHorizontal, jumpForce);
         }
-        else if (enemyHitLeft.collider != null || enemyHitRight.collider != null)
+        else if (enemyHitLeft.collider != null || enemyHitRight.collider != null || enemyHitUp.collider != null)
         {
             StartCoroutine(HealthManager.instance.Hurt());
         }
