@@ -83,6 +83,7 @@ public class enemyController : MonoBehaviour
 
     public void Hurt()
     {
+        
 
         if (!invincible)
         {
@@ -142,7 +143,7 @@ public class enemyController : MonoBehaviour
     IEnumerator invincibility()
     {
         invincible = true;
-
+        AudioManager.instance.playSound(AudioManager.instance.enemyHit);
         yield return new WaitForSeconds(hurtTime);
 
         invincible = false;
