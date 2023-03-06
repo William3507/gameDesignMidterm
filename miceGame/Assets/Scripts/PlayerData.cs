@@ -7,4 +7,5 @@ public class PlayerData
     public static int playerHealth;
     public static bool hasCheese;
     public static int currentCheckpoint;
+    public static int enemiesKilled;
 }

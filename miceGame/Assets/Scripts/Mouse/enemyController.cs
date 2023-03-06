@@ -38,16 +38,7 @@ public class enemyController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        RaycastHit2D upHit = Physics2D.Raycast(transform.position, Vector2.up, lengthRay, LayerMask.GetMask("Player"));
-        RaycastHit2D leftUpHit = Physics2D.Raycast(transform.position, new Vector2(-0.5f, 1f), lengthRay, LayerMask.GetMask("Player"));
-        RaycastHit2D rightUpHit = Physics2D.Raycast(transform.position, new Vector2(0.5f, 1f), lengthRay, LayerMask.GetMask("Player"));
-
-        Debug.DrawLine(transform.position, Vector2.up * lengthRay * 2, Color.blue);
-
-
-
-        if (upHit.collider != null || leftUpHit.collider != null || rightUpHit.collider != null)
+        if (CheckJumped())
         {
             Hurt();
         }
@@ -77,29 +68,41 @@ public class enemyController : MonoBehaviour
     }
 
     public void Hurt()
-    {        
-        
-            if (!invincible)
-            {
-                StartCoroutine(invincibility(1.2f));
+    {
 
-                health -= 1;
+        if (!invincible)
+        {
+            StartCoroutine(invincibility());
+            health -= 1;
+        }
 
-            }
-        
 
         if (health <= 0)
         {
+            PlayerData.enemiesKilled++;
             Destroy(gameObject);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public bool CheckJumped ()
     {
+        RaycastHit2D upHit = Physics2D.Raycast(transform.position, Vector2.up, lengthRay, LayerMask.GetMask("Player"));
+        RaycastHit2D leftUpHit = Physics2D.Raycast(transform.position, new Vector2(-0.5f, 1f), lengthRay, LayerMask.GetMask("Player"));
+        RaycastHit2D rightUpHit = Physics2D.Raycast(transform.position, new Vector2(0.5f, 1f), lengthRay, LayerMask.GetMask("Player"));
 
+        // Debug.DrawLine(transform.position, Vector2.up * lengthRay * 2, Color.blue);
+
+        if (upHit.collider != null || leftUpHit.collider != null || rightUpHit.collider != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    IEnumerator invincibility(float time)
+    IEnumerator invincibility()
     {
         invincible = true;
 
@@ -108,6 +111,7 @@ public class enemyController : MonoBehaviour
         invincible = false;
 
     }
+    
     IEnumerator AnimationCycler()
     {
         while (true)
