@@ -420,7 +420,6 @@ GameObject:
   - component: {fileID: 382130416}
   - component: {fileID: 382130418}
   - component: {fileID: 382130417}
-  - component: {fileID: 382130419}
   - component: {fileID: 382130420}
   m_Layer: 3
   m_Name: Tilemap
@@ -1615,27 +1614,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!50 &382130419
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 382130415}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: 15a9dddad3c6c44f2810dde82cceb67a, type: 2}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
 --- !u!19719996 &382130420
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -3512,7 +3490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4875650464042313807, guid: ccbcb18d81c3f40e29e76f5e5c1d7eb9, type: 3}
       propertyPath: m_Constraints
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6888420286613495269, guid: ccbcb18d81c3f40e29e76f5e5c1d7eb9, type: 3}
       propertyPath: m_RootOrder
