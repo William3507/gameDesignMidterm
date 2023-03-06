@@ -111,6 +111,8 @@ public class mouseBossFireball : MonoBehaviour
 
         Destroy(gameObject);
     }
-        
-    
+
+
+
+
 }

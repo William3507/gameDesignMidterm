@@ -32,6 +32,10 @@ public class HealthManager : MonoBehaviour
             isHurting = true;
             PlayerData.playerHealth--;
             UIHealthPanel.instance.SetLives(PlayerData.playerHealth);
+            if (PlayerData.playerHealth <= 0)
+            {
+                Die();
+            }
             yield return new WaitForSeconds(hurtTime);
             isHurting = false;
         }

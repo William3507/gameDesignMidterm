@@ -7,7 +7,11 @@ public class UIHealthPanel : MonoBehaviour
 {
     public static UIHealthPanel instance;
 
+    public float flashFps = 5;
+    private bool flash;
+
     [SerializeField] Image[] hearts;
+
 
     private void Awake()
     {
@@ -21,15 +25,15 @@ public class UIHealthPanel : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Updates the hearts by enabling/disabling them depending of the number of lives.
-    /// </summary>
-    /// <param name="lives">Lives.</param>
     public void SetLives(int lives)
     {
         for (int i = 0; i < hearts.Length; i++)
         {
-            if (i < lives)
+            if (i == lives)
+            {
+                StartCoroutine(FlashLife(i));
+            }
+            else if (i < lives)
             {
                 hearts[i].enabled = true;
             }
@@ -38,5 +42,23 @@ public class UIHealthPanel : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
+    }
+
+    IEnumerator FlashLife(int lostHeart)
+    {
+        while (HealthManager.instance.isHurting)
+        {
+            if (flash)
+            {
+                hearts[lostHeart].color = Color.grey;
+            }
+            else
+            {
+                hearts[lostHeart].color = Color.white;
+            }
+            flash = !flash;
+            yield return new WaitForSeconds(1/flashFps);
+        }
+        hearts[lostHeart].enabled = false;
     }
 }
