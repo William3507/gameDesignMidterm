@@ -18,11 +18,18 @@ public class UIInventoryPanel : MonoBehaviour
         {
             instance = this;
         }
-        cheese.enabled = false ;
+        UpdateInventory();
     }
 
     public void UpdateInventory ()
     {
-        cheese.enabled = true;
+        if (PlayerData.hasCheese)
+        {
+            cheese.enabled = true;
+        }
+        else
+        {
+            cheese.enabled = false;
+        }
     }
 }

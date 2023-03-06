@@ -20,7 +20,7 @@ public class HealthManager : MonoBehaviour
         {
             instance = this;
         }
-        if (PlayerData.playerHealth == 0)
+        if (PlayerData.playerHealth <= 0)
         {
             PlayerData.playerHealth = maxPlayerHealth;
         }
