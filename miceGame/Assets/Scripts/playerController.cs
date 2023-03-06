@@ -165,4 +165,13 @@ public class playerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Fireball"))
+        {
+            StartCoroutine(HealthManager.instance.Hurt());
+
+        }
+    }
 }

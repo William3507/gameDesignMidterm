@@ -109,9 +109,14 @@ MonoBehaviour:
   - {fileID: 457290744, guid: f3ca8d00db2ab457e97c13215e7dd358, type: 3}
   Jump:
   - {fileID: 1732136622, guid: f3ca8d00db2ab457e97c13215e7dd358, type: 3}
-  jumpForce: 35
+  jumpForce: 25
   groundDistance: 0.1
+  health: 3
+  invincible: 0
+  hurtTime: 5
+  lengthRay: 0.9
   fps: 8
+  fireBall: {fileID: 1049480184912509528, guid: cd951ded37019447db67b4384584eb05, type: 3}
   Platform:
     serializedVersion: 2
     m_Bits: 8

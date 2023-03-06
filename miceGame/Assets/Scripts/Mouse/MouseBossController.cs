@@ -207,7 +207,7 @@ public class MouseBossController : MonoBehaviour
                 }
 
 
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitForSeconds(1.75f);
             }
             else if (health == 2)                        //Mouse Phase 2
             {
@@ -229,7 +229,7 @@ public class MouseBossController : MonoBehaviour
                     mouseMagic();
                 }
 
-                yield return new WaitForSeconds(0.66f);
+                yield return new WaitForSeconds(1.5f);
 
             }
             else if (health == 1)                       //Mouse Phase 1
@@ -260,7 +260,7 @@ public class MouseBossController : MonoBehaviour
 
                 }
 
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(1.0f);
 
             }
 
