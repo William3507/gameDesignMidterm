@@ -225,7 +225,7 @@ public class MouseBossController : MonoBehaviour
                 if (move >= 4)
                 {
                     mouseJump(2.5f);
-                    yield return new WaitForSeconds(0.25f);
+                    yield return new WaitForSeconds(0.4f);
                     mouseJump(1f);
                 }
                 else if(move == 3)
@@ -257,6 +257,10 @@ public class MouseBossController : MonoBehaviour
                 }
                 else if (move >= 5 && move < 8)
                 {
+                    mouseJump(1f);
+                    yield return new WaitForSeconds(0.25f);
+                    mouseJump(1f);
+                    yield return new WaitForSeconds(0.2f);
                     mouseMagic();
                 }
                 else if (move <= 2)

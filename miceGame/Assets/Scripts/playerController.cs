@@ -165,7 +165,12 @@ public class playerController : MonoBehaviour
             InventoryManager.instance.GotCheese();
             Destroy(collision.gameObject);
         }
-        else if (collision.gameObject.CompareTag("Fireball"))
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Fireball"))
         {
             StartCoroutine(HealthManager.instance.Hurt());
 

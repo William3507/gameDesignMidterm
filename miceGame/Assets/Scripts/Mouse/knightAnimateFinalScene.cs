@@ -24,7 +24,7 @@ public class knightAnimateFinalScene : MonoBehaviour
         StartCoroutine(cutScene());
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
 
         if (rb2d.velocity.x >= 0)
@@ -49,9 +49,7 @@ public class knightAnimateFinalScene : MonoBehaviour
     IEnumerator cutScene()
     {
 
-
-
-        yield return new WaitUntil(() => toggle >= 2);
+        yield return new WaitUntil(() => toggle == 3 && Input.GetKeyDown(KeyCode.Space));
 
         rb2d.velocity = new Vector2(2f, 0);
 

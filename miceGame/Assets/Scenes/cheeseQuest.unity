@@ -140,11 +140,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1860015458862533005, guid: 5e63c07af3734423396af62443d863fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.91
+      value: -13.83
       objectReference: {fileID: 0}
     - target: {fileID: 1860015458862533005, guid: 5e63c07af3734423396af62443d863fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.49
+      value: -1.12
       objectReference: {fileID: 0}
     - target: {fileID: 1860015458862533005, guid: 5e63c07af3734423396af62443d863fe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -488,6 +488,7 @@ MonoBehaviour:
   fine: {fileID: 3166661222433962993, guid: a79733c9eb29f46dc87c24309e580e5a, type: 3}
   cookieSprite: {fileID: 7871354241254801285, guid: 0a72a5fd71cd143069995d33e2a5865a, type: 3}
   theEnd: {fileID: 7306418225527187991, guid: 9cbb42c8949b44c48b06b1aee84e62eb, type: 3}
+  mySpriteRenderer: {fileID: 0}
   toggle: -1
 --- !u!58 &1156762859
 CircleCollider2D:

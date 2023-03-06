@@ -6,10 +6,13 @@ public class squareBehavior : MonoBehaviour
 {
     Rigidbody2D rb2d;
     public int toggle = -1;
+    public Renderer rend;
 
     private void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        rend = GetComponent<Renderer>();
+        StartCoroutine(waitUntil());
     }
 
 
@@ -34,5 +37,13 @@ public class squareBehavior : MonoBehaviour
         {
             rb2d.position = new Vector2(-7.5f, 0.66f);
         }
+    }
+
+    IEnumerator waitUntil()
+    {
+        rend.enabled = false;
+        yield return new WaitForSeconds(8f);
+
+        rend.enabled = true;
     }
 }

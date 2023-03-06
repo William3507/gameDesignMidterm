@@ -15,7 +15,7 @@ public class knightAnimate : MonoBehaviour
     public GameObject mouse;
     float frameTimer;
     int currentFrame;
-    public string nextScene = "Mouse Castle";
+    public string nextScene;
 
     private void Start()
     {

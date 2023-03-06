@@ -31,7 +31,7 @@ public class mouseChoice : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("a") || Input.GetKeyDown("d"))
+if (Input.GetKeyDown("a") || Input.GetKeyDown("d"))
         {
             toggle /= -1;
         }
@@ -46,6 +46,8 @@ public class mouseChoice : MonoBehaviour
 
     IEnumerator cutScene()
     {
+        Instantiate(square);
+
         Instantiate(text1);
 
         yield return new WaitForSeconds(4f);
@@ -55,7 +57,6 @@ public class mouseChoice : MonoBehaviour
         yield return new WaitForSeconds(4f);
 
         Instantiate(choice);
-        Instantiate(square);
 
         yield return new WaitUntil(() => toggle >= 2);
 
@@ -64,10 +65,11 @@ public class mouseChoice : MonoBehaviour
             Instantiate(fine);
 
             mySpriteRenderer.flipX = true;
-            rb2d.velocity = new Vector2(4,0);
+            rb2d.velocity = new Vector2(4, 0);
             yield return new WaitForSeconds(3f);
 
             SceneManager.LoadScene(fightScene, LoadSceneMode.Single);
+
         }
         else
         {
