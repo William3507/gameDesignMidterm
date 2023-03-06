@@ -25,4 +25,13 @@ public class Spear : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        playerController player = collision.gameObject.GetComponent<playerController>();
+        if (player != null)
+        {
+            StartCoroutine(HealthManager.instance.Hurt());
+        }
+    }
 }

@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class SpearSpawn : MonoBehaviour
 {
-    public float spawnRate = 0.5f;
+    public float spawnRate = 10f;
     public GameObject spearPrefab;
-
     private float lastSpawnTime = 0;
 
     void Update()
@@ -15,8 +14,6 @@ public class SpearSpawn : MonoBehaviour
         {
             lastSpawnTime = Time.time;
             Vector3 spawnPosition = transform.position;
-            
-            // the Instatiate function creates a new GameObject copy (clone) from a Prefab at a specific location and orientation.
             Instantiate(spearPrefab, spawnPosition, Quaternion.identity);
             
         }

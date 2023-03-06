@@ -766,6 +766,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: window
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 1120
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5433a2ee67994f3582f0f07362bfdd7
+      internalID: -2035944177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -806,6 +827,7 @@ TextureImporter:
       slantL: 449528685
       floor: -375447366
       LSE: 385066098
+      window: -2035944177
       LSS: 1924908434
   spritePackingTag: 
   pSDRemoveMatte: 0
