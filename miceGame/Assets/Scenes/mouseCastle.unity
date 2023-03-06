@@ -314,11 +314,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &838719274 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9086984978986634164, guid: 52fe5dd0a18094b878146b84929e9636, type: 3}
-  m_PrefabInstance: {fileID: 226779513284934097}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1488111027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -871,31 +866,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5384792109265524663, guid: 52fe5dd0a18094b878146b84929e9636, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52fe5dd0a18094b878146b84929e9636, type: 3}
 --- !u!4 &226779513284934098 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2678703230656901659, guid: 52fe5dd0a18094b878146b84929e9636, type: 3}
   m_PrefabInstance: {fileID: 226779513284934097}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &226779513284934100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 838719274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d44b27398f68415fa59e717b02a4c6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: {fileID: 8300000, guid: 8262341eb0256415ea36804c70c8b160, type: 3}
-  playerHit: {fileID: 8300000, guid: 971acf6302a954f7d9fd441ff0190ee9, type: 3}
-  enemyHit: {fileID: 8300000, guid: ea99aa3f509704c93bef582cea617253, type: 3}
-  fireball: {fileID: 8300000, guid: 6735e817a47aa48aba5e1488e09f343c, type: 3}
-  playerDie: {fileID: 8300000, guid: 4f8fa93ca64b8477f95d9d36fdc77268, type: 3}
 --- !u!1001 &268396439576432969
 PrefabInstance:
   m_ObjectHideFlags: 0

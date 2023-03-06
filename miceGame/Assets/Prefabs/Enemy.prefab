@@ -123,6 +123,12 @@ MonoBehaviour:
   platforms:
     serializedVersion: 2
     m_Bits: 8
+  enemies:
+    serializedVersion: 2
+    m_Bits: 128
+  player:
+    serializedVersion: 2
+    m_Bits: 64
   speed: 0.5
   lengthRay: 0.9
   hurtTime: 1

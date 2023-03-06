@@ -5,6 +5,8 @@ using UnityEngine;
 public class enemyController : MonoBehaviour
 {
     public LayerMask platforms;
+    public LayerMask enemies;
+    public LayerMask player;
     public float speed = .5f;
     private bool goingLeft;
     public float lengthRay = .9f;
@@ -41,7 +43,7 @@ public class enemyController : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 vel = rb2d.velocity ;
-        if (!CheckGroundAhead())
+        if (!CheckGroundAhead() || CheckEnemyWallAhead())
         {
             goingLeft = !goingLeft;
         }
@@ -105,9 +107,9 @@ public class enemyController : MonoBehaviour
 
     public bool CheckJumped ()
     {
-        RaycastHit2D upHit = Physics2D.Raycast(transform.position, Vector2.up, lengthRay, LayerMask.GetMask("Player"));
-        RaycastHit2D leftUpHit = Physics2D.Raycast(transform.position, new Vector2(-0.5f, 1f), lengthRay, LayerMask.GetMask("Player"));
-        RaycastHit2D rightUpHit = Physics2D.Raycast(transform.position, new Vector2(0.5f, 1f), lengthRay, LayerMask.GetMask("Player"));
+        RaycastHit2D upHit = Physics2D.Raycast(transform.position, Vector2.up, lengthRay, player);
+        RaycastHit2D leftUpHit = Physics2D.Raycast(transform.position, new Vector2(-0.5f, 1f), lengthRay, player);
+        RaycastHit2D rightUpHit = Physics2D.Raycast(transform.position, new Vector2(0.5f, 1f), lengthRay, player);
 
         // Debug.DrawLine(transform.position, Vector2.up * lengthRay * 2, Color.blue);
 
@@ -135,6 +137,30 @@ public class enemyController : MonoBehaviour
 
         RaycastHit2D groundAhead = Physics2D.Raycast(rayStart, Vector2.down, lengthRay, platforms);
         if (groundAhead.collider != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    bool CheckEnemyWallAhead()
+    {
+        Vector3 direction;
+        if (goingLeft)
+        {
+            direction = Vector2.left;
+        }
+        else
+        {
+            direction = Vector2.right;
+        }
+
+        RaycastHit2D obstacleAhead = Physics2D.Raycast(transform.position + direction, direction, lengthRay, platforms);
+        RaycastHit2D enemyAhead = Physics2D.Raycast(transform.position + direction, direction, lengthRay, enemies);
+        if (obstacleAhead.collider != null || enemyAhead.collider != null)
         {
             return true;
         }
