@@ -129,6 +129,7 @@ public class MouseBossController : MonoBehaviour
     {
         Vector3 direction = (target.position - transform.position).normalized;
 
+
         rb2d.velocity = new Vector2(towardsPlayer*direction.x*jumpForce, jumpForce);
     }
 
@@ -200,6 +201,8 @@ public class MouseBossController : MonoBehaviour
                 if (move >= 1)
                 {
                     mouseJump(1f);
+                    yield return new WaitForSeconds(0.25f);
+                    mouseJump(1f);
                 }
                 else
                 {
@@ -215,6 +218,8 @@ public class MouseBossController : MonoBehaviour
 
                 if (move >= 4)
                 {
+                    mouseJump(2.5f);
+                    yield return new WaitForSeconds(0.25f);
                     mouseJump(1f);
                 }
                 else if(move == 3)
@@ -227,6 +232,8 @@ public class MouseBossController : MonoBehaviour
                 {
                     mouseJump(1.5f);
                     mouseMagic();
+                    mouseJump(1.5f);
+
                 }
 
                 yield return new WaitForSeconds(1.5f);
@@ -239,6 +246,8 @@ public class MouseBossController : MonoBehaviour
                 if (move >= 8)
                 {
                     mouseJump(1f);
+                    yield return new WaitForSeconds(0.25f);
+                    mouseJump(1f);
                 }
                 else if (move >= 5 && move < 8)
                 {
@@ -248,7 +257,8 @@ public class MouseBossController : MonoBehaviour
                 {
                     mouseJump(1.5f);
                     mouseMagic();
-                    mouseJump(-1.5f);
+                    yield return new WaitForSeconds(0.25f);
+                    mouseJump(1.5f);
                 }
                 else if(move > 2 && move < 5)
                 {
