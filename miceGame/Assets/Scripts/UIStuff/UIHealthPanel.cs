@@ -9,7 +9,6 @@ public class UIHealthPanel : MonoBehaviour
 
     public float flashFps = 5;
     private bool flash;
-    private float hurtTime = 1;
 
     [SerializeField] Image[] hearts;
 
@@ -30,14 +29,13 @@ public class UIHealthPanel : MonoBehaviour
     {
         for (int i = 0; i < hearts.Length; i++)
         {
-
-            if (i < lives - 1)
-            {
-                hearts[i].enabled = true;
-            }
-            else if (i == lives - 1)
+            if (i == lives)
             {
                 StartCoroutine(FlashLife(i));
+            }
+            else if (i < lives)
+            {
+                hearts[i].enabled = true;
             }
             else
             {
@@ -48,18 +46,18 @@ public class UIHealthPanel : MonoBehaviour
 
     IEnumerator FlashLife(int lostHeart)
     {
-        while (hurtTime > 0)
+        while (HealthManager.instance.isHurting)
         {
-            hurtTime -= hurtTime / flashFps;
             if (flash)
             {
-                hearts[lostHeart].color = Color.blue;
+                hearts[lostHeart].color = Color.grey;
             }
             else
             {
                 hearts[lostHeart].color = Color.white;
             }
-            yield return new WaitForSeconds(hurtTime / flashFps);
+            flash = !flash;
+            yield return new WaitForSeconds(1/flashFps);
         }
         hearts[lostHeart].enabled = false;
     }
