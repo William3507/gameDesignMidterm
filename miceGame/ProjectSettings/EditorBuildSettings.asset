@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/StartingLevel.unity
     guid: 34287bba180d44aa8999b4d766092fb8
   - enabled: 1
+    path: Assets/Scenes/cheeseQuest.unity
+    guid: ae93df9a48a924965b915642e72b1579
+  - enabled: 1
     path: Assets/Scenes/mouseFight.unity
     guid: 4077d4eb8a6844096983cf425265381f
   m_configObjects: {}
