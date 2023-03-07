@@ -23,6 +23,7 @@ public class UIHealthPanel : MonoBehaviour
         {
             instance = this;
         }
+        SetLives(PlayerData.playerHealth);
     }
 
     public void SetLives(int lives)
